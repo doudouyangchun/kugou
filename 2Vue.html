@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="test_vue/js/vue2.min.js"></script>
+    <style>
+        body{
+            padding: 0px;
+            margin:0px;
+        }
+        nav{
+            background-color: rgba(177, 159, 159, 0.1);
+            height: 30px;
+        }
+        nav span{
+            font-size: 15px;
+            color: #327AB5;
+            margin-left: 20px;
+            line-height: 30px;
+        }
+        nav font{
+            color: #aca5a5;
+            line-height: 30px;
+        }
+        #top{
+            height: 40px;
+            background-color: #F9F9F9;
+        }
+        #top span{
+            margin-left: 20px;
+            color: #271d1d;
+            font-size: 16px;
+            line-height: 40px;
+            font-weight: 500;
+        }
+        #shou{
+            background-color: white;
+            margin-left: 40px;
+        }
+        #shou span{
+            margin-left:10px;
+            width: 100px;
+            height: 40px;
+            color: #c1d3e2;
+            font-size: 14px;
+        }
+        #left{
+            width: 100px;
+            float: left;
+            background-color: white;
+        }
+        #you{
+            height: 300px;
+            width: 900px;
+            background-color: beige;
+            float: left;
+            display: block;
+        }
+        .you{
+            height: 300px;
+            width: 900px;
+            background-color: beige;
+            float: left;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+<!--       <nav><span>周考 <font>/</font> 首页</span></nav>-->
+       <div id="top">
+           <span>周考</span>
+       </div>
+       <div id="left">
+           <div id="shou" >
+           <div  @click="setType(item.name)" v-for="(item, index) in news"><span> {{item.name}}</span></div>
+           </div>
+       </div>
+           <span  v-if="type==='首页'">首页</span>
+           <span  v-else-if="type==='菜单1'">菜单1</span>
+           <span  v-else-if="type==='菜单2'">菜单2</span>
+           <span  v-else-if="type==='菜单3'">菜单3</span>
+           <span  v-else-if="type==='菜单4'">菜单4</span>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    var vm=new Vue({
+        el:"#box",
+        data:{
+           type:"首页",
+           news:[
+               {
+                   name:'首页',
+               },
+               {
+                   name:'菜单1',
+               },
+               {
+                   name:'菜单2',
+               },
+               {
+                   name:'菜单3',
+               },
+               {
+                   name:'菜单4',
+               }
+           ],
+       },
+       methods:{
+           setType:function(type){
+               vm.$data.type = type;//this就是data里面定义的东西
+           }
+       }
+    })
+</script>
